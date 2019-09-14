@@ -8,6 +8,7 @@ constraint-layout-solver.jar
 coordinatorlayout.jar
 cursoradapter.jar
 customview.jar
+design.jar
 documentfile.jar
 drawerlayout.jar
 interpolator.jar
@@ -26,6 +27,7 @@ support-core-utils.jar
 support-fragment.jar
 support-vector-drawable.jar
 swiperefreshlayout.jar
+transition.jar
 versionedparcelable.jar
 viewmodel.jar
 viewpager.jar

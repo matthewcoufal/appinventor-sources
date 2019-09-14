@@ -5,6 +5,7 @@ constraint-layout.aar
 coordinatorlayout.aar
 cursoradapter.aar
 customview.aar
+design.aar
 documentfile.aar
 drawerlayout.aar
 interpolator.aar
@@ -21,6 +22,7 @@ support-core-utils.aar
 support-fragment.aar
 support-vector-drawable.aar
 swiperefreshlayout.aar
+transition.aar
 versionedparcelable.aar
 viewmodel.aar
 viewpager.aar
