@@ -1,6 +1,7 @@
 animated-vector-drawable.aar
 appcompat-v7.aar
 asynclayoutinflater.aar
+cardview-v7.aar
 constraint-layout.aar
 coordinatorlayout.aar
 cursoradapter.aar
