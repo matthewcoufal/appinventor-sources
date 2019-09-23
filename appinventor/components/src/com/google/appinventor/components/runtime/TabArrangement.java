@@ -14,6 +14,8 @@ import com.google.appinventor.components.common.ComponentCategory;
 import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.common.YaVersion;
 
+import java.util.ArrayList;
+
 /**
  * An arrangement for tab bars.
  *
@@ -26,10 +28,10 @@ import com.google.appinventor.components.common.YaVersion;
         iconName = "images/tabBar.png")
 @SimpleObject
 @UsesPermissions(permissionNames = "android.permission.INTERNET")
-public class TabArrangement extends AndroidViewComponent {
+public class TabArrangement extends AndroidViewComponent implements TabLayout.OnTabSelectedListener {
     private TabLayout view;
-    private Tab[] tabs;
-    private int selectedIndex;
+    private ArrayList<Tab> tabs;
+    private Tab selectedTab;
     private int backgroundColor;
     private int unselectedColor;
     private int selectedColor;
@@ -59,6 +61,7 @@ public class TabArrangement extends AndroidViewComponent {
             defaultValue = Component.DEFAULT_VALUE_COLOR_BLACK)
     public void BackgroundColor(int argb) {
         backgroundColor = argb;
+        view.setBackgroundColor(backgroundColor);
         updateAppearance();
     }
 
@@ -85,6 +88,7 @@ public class TabArrangement extends AndroidViewComponent {
             defaultValue = Component.DEFAULT_VALUE_COLOR_GRAY)
     public void UnselectedColor(int argb) {
         unselectedColor = argb;
+        view.setTabTextColors(unselectedColor, selectedColor);
         updateAppearance();
     }
 
@@ -111,11 +115,10 @@ public class TabArrangement extends AndroidViewComponent {
             defaultValue = Component.DEFAULT_VALUE_COLOR_WHITE)
     public void SelectedColor(int argb) {
         selectedColor = argb;
+        view.setSelectedTabIndicatorColor(selectedColor);
         updateAppearance();
     }
 
-    // Update appearance based on values of backgroundImageDrawable, backgroundColor and shape.
-    // Images take precedence over background colors.
     private void updateAppearance() {
         //TODO
     }
@@ -128,10 +131,9 @@ public class TabArrangement extends AndroidViewComponent {
     public TabArrangement(ComponentContainer container) {
         super(container);
         view = new TabLayout(container.$context());
-        for (Tab tab : tabs) {
-            view.addTab(tab.getTabButton());
-        }
-        //view.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener());
+        tabs = new ArrayList<>();
+        selectedTab = null;
+        view.addOnTabSelectedListener(this);
         container.$add(this);
     }
 
@@ -141,12 +143,34 @@ public class TabArrangement extends AndroidViewComponent {
     }
 
     public void addTab(Tab tab) {
+        tabs.add(tab);
         TabLayout.Tab tabButton = tab.getTabButton();
         view.addTab(tabButton);
     }
 
     public void removeTab(Tab tab) {
+        tabs.remove(tab);
         TabLayout.Tab tabButton = tab.getTabButton();
         view.removeTab(tabButton);
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        for (Tab t : tabs) {
+            if (t.getTabButton().equals(tab)) {
+                selectedTab = t;
+            }
+        }
+        updateAppearance();
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+        updateAppearance();
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+        updateAppearance();
     }
 }
