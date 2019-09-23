@@ -27,7 +27,7 @@ public class MockTab extends MockHVArrangement {
      * @param editor  editor of source file the component belongs to
      */
     public MockTab(SimpleEditor editor) {
-        super(editor, TYPE, images.vertical(),
+        super(editor, TYPE, images.tab(),
                 ComponentConstants.LAYOUT_ORIENTATION_VERTICAL,
                 ComponentConstants.NONSCROLLABLE_ARRANGEMENT);
     }

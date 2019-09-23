@@ -7,13 +7,15 @@
 package com.google.appinventor.client.editor.simple.components;
 
 import com.google.appinventor.client.editor.simple.SimpleEditor;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.CheckBox;
 
 /**
  * Mock TabArrangement component.
  *
  * @author yc2296@cornell.edu (Claire Yuqing Cui)
  */
-public class MockTabArrangement extends MockVisibleComponent {
+public class MockTabArrangement extends MockContainer {
     /**
      * Component type name.
      */
@@ -25,6 +27,6 @@ public class MockTabArrangement extends MockVisibleComponent {
      * @param editor  editor of source file the component belongs to
      */
     public MockTabArrangement(SimpleEditor editor) {
-        super(editor, TYPE, images.circle());
+        super(editor, TYPE, images.tabBar(), new MockTabArrangementLayout());
     }
 }

@@ -423,10 +423,10 @@ public final class SimpleComponentDescriptor {
       return new MockRectangle(editor);
     } else if (name.equals(MockFeatureCollection.TYPE)) {
       return new MockFeatureCollection(editor);
-    }  else if (name.equals(MockTabArrangement.TYPE)) {
-      return new MockTabArrangement(editor);
     } else if (name.equals(MockTab.TYPE)) {
       return new MockTab(editor);
+    } else if (name.equals(MockTabArrangement.TYPE)) {
+      return new MockTabArrangement(editor);
     } else {
       // TODO(user): add 3rd party mock component proxy here
       throw new UnsupportedOperationException("unknown component: " + name);
